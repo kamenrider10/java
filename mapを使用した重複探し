@@ -1,0 +1,51 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        
+        //読み込み
+        int N = sc.nextInt();
+        int count = 0;
+        
+        //マップ定義した
+        Map<String,Integer> map = new HashMap<>();
+        
+        //マップに格納 キー値は文字列、値は数字
+        while(sc.hasNext()){
+             String A = sc.next();
+            
+            if(map.containsKey(A)){
+                 map.put(A,map.get(A)+1);
+            }
+            else{
+                map.put(A,1);
+            }
+            //最も重複している回数を出す
+            if(count<map.get(A)){
+                count = map.get(A);
+            }
+        }
+     
+     //ラムダ式のファイナル回避
+     int max = count;
+     
+     //文字列だけ格納する
+     List list = new ArrayList<String>();
+     
+     map.forEach((k, v) ->
+        {
+            if(v == max){
+                list.add(k);
+            }
+        }
+        );
+        //昇順に並び替え（arraylist用）
+        Collections.sort(list);
+     
+     //出力　拡張for文できなかった
+     for(int i =0;i<list.size();i++){
+         System.out.println(list.get(i));
+     }
+   }
+}

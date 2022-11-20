@@ -1,0 +1,35 @@
+//飛び石問題　topsic
+
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int mas  = sc.nextInt();
+        int isi = sc.nextInt();
+        String r = sc.next();
+        String[] jump = r.split("");
+        int count = 1;
+        int xcount = 0;
+        int iti = isi;
+        
+        while(iti<mas&&isi>xcount){
+            if(jump[iti].equals("X")){
+                iti--;
+                xcount++;
+            }
+            else{
+                xcount = 0;
+                count++;
+                iti += isi; 
+            }
+        }
+        if(xcount>=isi){
+        System.out.println(-1);
+        }
+        else{
+            System.out.println(count);
+        }
+    }
+    
+}
